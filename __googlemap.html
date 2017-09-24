@@ -29,7 +29,7 @@
         }
         while (w == 0.0 || w >= 1.0)
           c = Math.sqrt((-2 * Math.log(w)) / w);
-        return u*c*0.08;
+        return u*c;
       }
 
       function initMap() {
@@ -48,32 +48,31 @@
           dissipating: true,
           radius: 80
         });
-        var markers = [];
-		var batch = 0;
+        var tmp = 0;
         setInterval (
           function() {
-				var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-				markers.push(new google.maps.Marker({
-				  position: {lat: 29.7205594+randomNormalDistribution(), lng: -95.3962938+randomNormalDistribution()},
-				  map: map,
-				  icon: image,
-				  count: batch
-				}));
-				for (var i = 0; i < markers.length; i++) {
-					if(markers[i].count>batch-4){
-						if(markers[i].map==null)
-							markers[i].setMap(map);
-					}
-					else{
-						markers[i].setMap(null);
-					}
-				}
-				batch++;
+            insert_data([[results[0]+randomNormalDistribution()*0.03, results[1 ]+randomNormalDistribution()*0.03, 1]], current);
+            tmp++;
+            if (tmp == 4)
+              tmp = 0;
           },
-          300
+          3000
         );
       }
 
+      function insert_data(data, current) {
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i][0]);
+          if (heatmapData.length < 1000) {
+            heatmapData.push({location: new google.maps.LatLng(data[i][0], data[i][1]), weight: data[i][2]});
+          }
+          else {
+            heatmapData[current % 1000] = ({location: new google.maps.LatLng(data[i][0], data[i][1]), weight: data[i][2]});
+          }
+          current++;
+        }
+        heatmap.setMap(map);        
+      }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=your-key&libraries=visualization&callback=initMap">
