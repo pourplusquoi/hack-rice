@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="careApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hurricare</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/log.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/jquery.toastmessage.css" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body ng-controller="MainCtrl">
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 overflow">
+                <div class="social-icons pull-right">
+                    <ul class="nav nav-pills">
+                        <li><a target="_blank" href="https://www.facebook.com/yuanqing.zhu.3591"><i
+                                class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com/delimma_zhu"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a target="_blank" href="https://plus.google.com/u/0/113785733119835278917"><i
+                                class="fa fa-google-plus"></i></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/in/yuanqing-zhu-195b1790/"><i
+                                class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="images/logo.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="datamap.html">Data Visualization</a></li>
+                    <li ng-if="currentUser"><a href="donation.html">Post a Donation</a></li>
+                    <li ng-if="currentUser"><a href="request.html">Apply for request</a></li>
+                    <li ng-if="currentUser" class="dropdown"><a href="#">{{currentNickname}} <i
+                            class="fa fa-angle-down"></i></a>
+                        <ul style="max-width: 140px;" role="menu" class="sub-menu">
+                            <li><a href="personal.html">Personal Center</a></li>
+                            <li><a href="#" ng-click="logout()">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="search" ng-if="!currentUser">
+                <form role="form">
+                    <i class="fa fa-user"></i>
+                    <div class="field-toggle">
+                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+<section id="home-slider">
+    <div class="container">
+        <div class="main-slider">
+            <div class="slide-text">
+                <h1>We Are Waiting For You!</h1>
+                <p>A platform for people to help each other, especially when after great disasters.
+                    You can either donate anything or ask for some help Here.
+                    We're really looking forward to your joining, hope <i><b>Hurricare</b></i> &nbsp; can help the
+                    people in need, </p>
+                <a ng-if="!currentUser" href="register.html" class="btn btn-common">SIGN UP</a>
+                <a ng-if="!currentUser" href="login.html" class="btn btn-common" style="margin-left: 7px;">SIGN IN</a>
+                <a ng-if="currentUser" href="donation.html" class="btn btn-common">Post a Donate</a>
+                <a ng-if="currentUser" href="request.html" class="btn btn-common" style="margin-left: 7px;">Apply for
+                    Request</a>
+            </div>
+            <img src="images/home/slider/slide1/house.png" class="img-responsive slider-house" alt="slider image">
+            <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
+            <img src="images/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image">
+            <img src="images/home/slider/slide1/cloud1.png" class="slider-cloud1" alt="slider image">
+            <img src="images/home/slider/slide1/cloud2.png" class="slider-cloud2" alt="slider image">
+            <img src="images/home/slider/slide1/cloud3.png" class="slider-cloud3" alt="slider image">
+            <img src="images/home/slider/slide1/sun.png" class="slider-sun" alt="slider image">
+            <img src="images/home/cycle.png" class="slider-cycle" alt="">
+        </div>
+    </div>
+    <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+</section>
+<!--/#home-slider-->
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="single-service">
+                    <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <img src="images/test.png" alt="" style="width: 95px;height: 102px;">
+                    </div>
+                    <h2>{{feedback1.title}}</h2>
+                    <p>{{feedback1.content}}</p>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="single-service">
+                    <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
+                        <img src="images/test.png" alt="" style="width: 95px;height: 102px;">
+                    </div>
+                    <h2>{{feedback2.title}}</h2>
+                    <p>{{feedback2.content}}</p>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
+                <div class="single-service">
+                    <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
+                        <img src="images/test.png" alt="" style="width: 95px;height: 102px;">
+                    </div>
+                    <h2>{{feedback3.title}}</h2>
+                    <p>{{feedback3.content}}</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#services-->
+
+<section id="action" class="responsive">
+    <div class="vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="action take-tour">
+                    <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <h1 class="title">Hurricane Harvey</h1>
+                        <p>Houston area copes with flooding as Harvey delivers pounding rainfall</p>
+                    </div>
+                    <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <div class="tour-button">
+                            <a target="_blank"
+                               href="https://goo.gl/forms/pH0kWge2xGJrTBCE3"
+                               class="btn btn-common">Urgent need !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#action-->
+
+<section id="features">
+    <div class="container">
+        <div class="row">
+            <div class="single-features">
+                <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <img ng-src="{{news1.url_pic}}" class="img-responsive" alt="" style="width: 400px;height:200px;">
+                </div>
+                <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <h2>{{news1.title}}</h2>
+                    <p>{{news1.content}} <a target="_blank" ng-href="{{news1.url_web}}">&nbsp&nbspLearn more</a></p>
+                </div>
+            </div>
+            <div class="single-features">
+                <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms"
+                     data-wow-delay="300ms" style="padding-right: 55px;">
+                    <h2>{{news2.title}}</h2>
+                    <p>{{news2.content}} <a target="_blank" ng-href="{{news2.url_web}}">&nbsp&nbspLearn more</a></P>
+                </div>
+                <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <img ng-src="{{news2.url_pic}}" class="img-responsive" alt="" style="width: 400px;height:200px;">
+                </div>
+            </div>
+            <div class="single-features">
+                <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <img src="{{news3.url_pic}}" class="img-responsive" alt="" style="width: 400px;height:200px;">
+                </div>
+                <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <h2>{{news3.title}}</h2>
+                    <p>{{news3.content}} <a target="_blank" ng-href="{{news3.url_web}}">&nbsp&nbspLearn more</a></P>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#features-->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center bottom-separator">
+                <img src="images/home/under.png" class="img-responsive inline" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="testimonial bottom">
+                    <h2>Developers said</h2>
+                    <div class="media">
+                        <div class="pull-left">
+                            <a href="#"><img src="images/btm1.jpg" alt=""></a>
+                        </div>
+                        <div class="media-body">
+                            <blockquote>Freshman in Hackrice. Glad to have such talented teammates, to get over
+                                difficulties.
+                            </blockquote>
+                            <h3><a href="#">- Yuanqing Zhu</a></h3>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            <a href="#"><img src="images/btm2.png" alt=""></a>
+                        </div>
+                        <div class="media-body">
+                            <blockquote>Our front-end developer is god.
+                            </blockquote>
+                            <h3><a href="">- Back-end developer</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="contact-info bottom">
+                    <h2>Contacts</h2>
+                    <address>
+                        E-mail: <a href="mailto:someone@example.com">yz120@rice.edu</a> <br>
+                        Phone: +1 (281) 658 2654 <br>
+                        Fax: +1 (281) 658 2654 <br>
+                    </address>
+                    <br><br>
+
+                    <h2>Address</h2>
+                    <address>
+                        Rice Graduate Apartment <br>
+                        1515 Bissonnet St. <br>
+                        Houston Texas 77005 <br>
+                        United States <br>
+                    </address>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="contact-form bottom">
+                    <h2>Send a message</h2>
+                    <form id="main-contact-form" name="contact-form" method="post" action="#">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" required="required"
+                                   placeholder="Email Id">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8"
+                                      placeholder="Your text here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="copyright-text text-center">
+                    <p>&copy; Hackrice 2017. All Rights Reserved.</p>
+                    <p>Designed by <a target="_blank" href="http://www.themeum.com">Dilemma</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script>
+</body>
+</html>

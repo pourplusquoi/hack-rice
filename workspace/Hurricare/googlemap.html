@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="./js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var map;
+    var heatmapData;
+    function randomNormalDistribution() {
+        var u = 0.0, v = 0.0, w = 0.0, c = 0.0;
+        do {
+            u = Math.random() * 2 - 1.0;
+            v = Math.random() * 2 - 1.0;
+            w = u * u + v * v;
+        }
+        while (w == 0.0 || w >= 1.0)
+        c = Math.sqrt((-2 * Math.log(w)) / w);
+        return u * c * 0.08;
+    }
+
+    function initMap() {
+        var houston = new google.maps.LatLng(29.755427, -95.376123);
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: houston,
+            mapTypeId: 'terrain'
+        });
+        heatmapData = [];
+        var current = 0;
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            opacity: 0.5,
+            dissipating: true,
+            radius: 80
+        });
+        var markers = [];
+        var batch = 0;
+
+        setInterval(
+                function () {
+                    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+                    $.getJSON( "http://34.212.239.105:8000/api/getTweet", function( d ) {
+                        for (var j in d.data) {
+                            markers.push(new google.maps.Marker({
+                                position: {
+                                    lat: d.data[j]["location"][0] + randomNormalDistribution(),
+                                    lng: d.data[j]["location"][1] + randomNormalDistribution()
+                                },
+                                map: map,
+                                icon: image,
+                                count: batch
+                            }));
+                        }
+                    });
+
+                    for (var i = 0; i < markers.length; i++) {
+                        if (markers[i].count > batch - 4) {
+                            if (markers[i].map == null)
+                                markers[i].setMap(map);
+                        }
+                        else {
+                            markers[i].setMap(null);
+                        }
+                    }
+                    batch++;
+                },
+                3000
+        );
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlwbPWXXcICc959jzORo5vZ9v9ixtAHRk&libraries=visualization&callback=initMap">
+</script>
+</body>
+</html>

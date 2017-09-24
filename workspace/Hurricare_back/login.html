@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/loading.css" rel="stylesheet">
+    <link href="css/lrtk.css" rel="stylesheet">
+    <link href="css/module.css" rel="stylesheet">
+    <link href="css/upload.css" rel="stylesheet">
+    <link href="css/jquery.toastmessage.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="login" ng-controller="LoginCtrl">
+    <div class="wrapper">
+        <div class="login">
+            <form class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="username" class="control-label fa fa-envelope"></label>
+                            <input id="username" ng-model="username" placeholder="Username" tabindex="1"
+                                   autofocus="autofocus" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label fa fa-asterisk"></label>
+                            <input id="password" type="password" ng-model="password" placeholder="Password" tabindex="2"
+                                   class="form-control input-medium">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions"><a href="/" tabindex="3"
+                                             class="btn pull-left btn-link text-muted">Forgot password?</a>
+                    <button type="submit" tabindex="4" class="btn btn-primary" ng-click="login(username,password)">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/controllers/LoginCtrl.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/chart-data.js"></script>
+<script type="text/javascript" src="js/chart.min.js"></script>
+<script type="text/javascript" src="js/profile.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<script type="text/javascript" src="js/html5shiv.min.js"></script>
+<script type="text/javascript" src="js/easypiechart-data.js"></script>
+<script type="text/javascript" src="js/easypiechart.js"></script>
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script>
+</body>
+</html>

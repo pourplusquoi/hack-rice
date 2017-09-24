@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="careApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hurricare Data Visualization</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/log.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/jquery.toastmessage.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body ng-controller="MapCtrl">
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 overflow">
+                <div class="social-icons pull-right">
+                    <ul class="nav nav-pills">
+                        <li><a target="_blank" href="https://www.facebook.com/yuanqing.zhu.3591"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com/delimma_zhu"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://plus.google.com/u/0/113785733119835278917"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/in/yuanqing-zhu-195b1790/"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="images/logo.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#">Data Visualization</a></li>
+                    <li ng-if="currentUser"><a href="donation.html">Post a Donation</a></li>
+                    <li ng-if="currentUser"><a href="request.html">Apply for request</a></li>
+                    <li ng-if="currentUser" class="dropdown"><a href="#">{{currentNickname}} <i
+                            class="fa fa-angle-down"></i></a>
+                        <ul style="max-width: 140px;" role="menu" class="sub-menu">
+                            <li><a href="personal.html">Personal Center</a></li>
+                            <li><a href="#" ng-click="logout()">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="search" ng-if="!currentUser">
+                <form role="form">
+                    <i class="fa fa-user"></i>
+                    <div class="field-toggle">
+                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+<section id="registerForm" class="responsive" style="text-align: center;height:550px;">
+    <iframe id="frame" src="googlemap.html" width="85%" height="100%" frameborder="0">
+    </iframe>
+</section>
+<!--/#loginForm-->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="copyright-text text-center">
+                    <p>&copy; Hackrice 2017. All Rights Reserved.</p>
+                    <p>Designed by <a target="_blank" href="http://www.themeum.com">Dilemma</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/controllers/mapCtrl.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+@media only screen and (min-width: 992px) {
+    .length {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .length {
+        width: 85%;
+        margin: 0 auto;
+    }
+}
