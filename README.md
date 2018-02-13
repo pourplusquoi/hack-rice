@@ -2,6 +2,9 @@
 
 This project is a website that serves to pair donator with receiver after a natural disaster.
 
+## Our team
+Our team members include: Yuanqing Zhu, Wenyuann Gu, Gao Pan, Yang Pan, Dapeng Shan.
+
 ## Inspiration
 After Hurricane Harvey, thousands of houses were damaged, numbers of people were badly in need of food, water and shelter. At the same time, we've also witnessed many warm-hearted donators who volunteered to help and provide utilities. However, due to the lack of communication platform, it is usually inefficient for donators and receivers to pair with each other. Inspired from this need, we came up with the idea of building "HurriCare" website.
 
